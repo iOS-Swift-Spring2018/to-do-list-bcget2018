@@ -18,6 +18,7 @@ class DetailViewController: UIViewController {
         if let toDoItem = toDoItem {
             toDoField.text = toDoItem
         }
+        enableDisableSaveButton()
         toDoField.becomeFirstResponder()
     }
     
@@ -27,8 +28,18 @@ class DetailViewController: UIViewController {
         }
     }
     
-    @IBAction func toDoFieldChanged(_ sender: UITextField) {
+    func enableDisableSaveButton() {
+        if let toDoFieldCount = toDoField.text?.count, toDoField.count > 0 {
+            saveBarButton.isEnabled = true
+        } else {
+            saveBarButton.isEnabled = false
+        }
     }
+    
+    @IBAction func toDoFieldChanged(_ sender: UITextField) {
+       enableDisableSaveButton()
+    }
+    
     @IBAction func cancelPressed(_ sender: UIBarButtonItem) {
         let isPresentingInAddMode = presentingViewController is UINavigationController
         if isPresentingInAddMode {
