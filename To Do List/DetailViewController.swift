@@ -38,7 +38,7 @@ class DetailViewController: UIViewController {
     }
     
     func enableDisableSaveButton() {
-        if let toDoFieldCount = toDoField.text?.count, toDoField.count > 0 {
+        if let toDoFieldCount = toDoField.text?.count, toDoField.text!.count > 0 {
             saveBarButton.isEnabled = true
         } else {
             saveBarButton.isEnabled = false
